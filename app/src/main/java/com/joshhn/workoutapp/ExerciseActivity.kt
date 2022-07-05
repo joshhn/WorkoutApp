@@ -1,5 +1,6 @@
 package com.joshhn.workoutapp
 
+import android.content.Intent
 import android.media.MediaPlayer
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
@@ -159,7 +160,9 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
 
                     setupRestView()
                 }else{
-                    Toast.makeText(this@ExerciseActivity, "Done",Toast.LENGTH_LONG).show()
+                    val intent = Intent(this@ExerciseActivity, FinishActivity::class.java)
+                    startActivity(intent)
+                    finish()
                 }
             }
         }.start()
