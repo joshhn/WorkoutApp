@@ -1,5 +1,7 @@
 package com.joshhn.workoutapp
 
+import android.media.MediaPlayer
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.CountDownTimer
@@ -7,6 +9,7 @@ import android.speech.tts.TextToSpeech
 import android.util.Log
 import android.view.View
 import android.widget.Toast
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.joshhn.workoutapp.databinding.ActivityExerciseBinding
 import java.util.*
 import kotlin.collections.ArrayList
@@ -29,6 +32,11 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
     //Add Text to Speech feature
     private var tts: TextToSpeech? = null
 
+    //Add a Media Player to play sound
+    private var player: MediaPlayer? = null
+
+    //Add Exercise Adapter for RecyclerView
+    private var exerciseAdapter: ExerciseStatusAdapter? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -49,11 +57,21 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
 
         //TextToSpeech
         tts = TextToSpeech(this, this)
-        
+
+        speakOut("Go")
         setupRestView()
+        setupExerciseRecyclerView()
     }
 
+    private fun setupExerciseRecyclerView(){
+        binding?.rvExerciseStatus?.layoutManager = LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false)
+        exerciseAdapter = ExerciseStatusAdapter(exerciseList!!)
+        binding?.rvExerciseStatus?.adapter = exerciseAdapter
+    }
+
+
     private fun setupRestView(){
+
         binding?.flExerciseProgressBar?.visibility = View.GONE
         binding?.ivExerciseImage?.visibility = View.GONE
         binding?.tvExercise?.visibility = View.GONE
@@ -107,6 +125,7 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
         binding?.ivExerciseImage?.setImageResource(exerciseList!![currentExercisePosition].getImage())
         binding?.tvExercise?.text = exerciseList!![currentExercisePosition].getName()
         exerciseList!![currentExercisePosition].setIsSelected(true)
+        exerciseAdapter!!.notifyDataSetChanged()
 
         setExerciseProgressBar()
     }
@@ -121,8 +140,23 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
                 binding?.tvExerciseTimer?.text = ((exerciseDuration/1000) - exerciseProgress).toString()
             }
             override fun onFinish() {
+
+                exerciseList!![currentExercisePosition].setIsSelected(false )
+                exerciseList!![currentExercisePosition].setIsCompleted(true)
+                exerciseAdapter!!.notifyDataSetChanged()
+
                 if(currentExercisePosition < exerciseList!!.size -1){
-                    exerciseList!![currentExercisePosition].setIsCompleted(true)
+
+                    //Play sound to stop
+//                    try{
+//                        val soundURI = Uri.parse("android.resource://com.joshhn.workoutapp/" + R.raw.stop_sound)
+//                        player = MediaPlayer.create(applicationContext,soundURI)
+//                        player?.isLooping = false
+//                        player?.start()
+//                    }catch (e: Exception){
+//                        e.printStackTrace()
+//                    }
+
                     setupRestView()
                 }else{
                     Toast.makeText(this@ExerciseActivity, "Done",Toast.LENGTH_LONG).show()
@@ -148,6 +182,10 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
         if (tts!= null){
             tts!!.stop()
             tts!!.shutdown()
+        }
+
+        if(player!= null){
+            player!!.stop()
         }
 
         binding = null
