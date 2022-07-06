@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">WorkoutApp</string>
+    <string name="image">image</string>
 </resources>

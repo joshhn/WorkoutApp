@@ -21,30 +21,99 @@
         android:id="@+id/flStart"
         android:layout_width="150dp"
         android:layout_height="150dp"
-        android:background="@drawable/item_color_accent_border_ripple_background"
         android:layout_marginTop="20dp"
+        android:background="@drawable/item_color_accent_border_ripple_background"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/ivLogo"
-        >
-
+        app:layout_constraintTop_toTopOf="parent">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="START"
             android:layout_gravity="center"
+            android:text="START"
             android:textColor="@color/colorPrimary"
             android:textSize="@dimen/default_button_text_size"
-            android:textStyle="bold"/>
+            android:textStyle="bold" />
 
 
+    </FrameLayout>
+
+
+    <FrameLayout
+        android:id="@+id/flBMI"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:background="@drawable/item_circular_color_accent_background"
+        android:gravity="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/flHistory"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/flStart"
+        app:layout_constraintVertical_bias="0.376">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="BMI"
+            android:textColor="#FFFFFF"
+            android:textSize="22sp"
+            android:textStyle="bold" />
     </FrameLayout>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="Calculator"
+        android:textColor="@color/colorAccent"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@id/flBMI"
+        app:layout_constraintStart_toStartOf="@id/flBMI"
+        app:layout_constraintTop_toBottomOf="@id/flBMI" />
+
+    <FrameLayout
+        android:id="@+id/flHistory"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
         android:layout_gravity="center"
+        android:background="@drawable/item_circular_color_accent_background"
+        android:gravity="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/flBMI"
+        app:layout_constraintTop_toBottomOf="@id/flStart"
+        app:layout_constraintVertical_bias="0.376">
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:contentDescription="@string/image"
+            android:src="@drawable/ic_calendar" />
+    </FrameLayout>
+
+    <TextView
+        app:layout_constraintTop_toBottomOf="@id/flHistory"
+        app:layout_constraintStart_toStartOf="@id/flHistory"
+        app:layout_constraintEnd_toEndOf="@id/flHistory"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="History"
+        android:textColor="@color/colorAccent"
+        android:textSize="22sp"
+        android:textStyle="bold" />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="100dp"
         android:text="Developed by Duy N. Huynh"
         android:textColor="@color/colorPrimary"
         android:textSize="12sp"
@@ -52,6 +121,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/flStart"
-        app:layout_constraintVertical_bias="0.7" />
+        app:layout_constraintVertical_bias="0.835" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
