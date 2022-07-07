@@ -22,11 +22,11 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
     private var binding: ActivityExerciseBinding? = null
 
     private var restTimer: CountDownTimer? = null
-    private var restDuration: Long = 5000
+    private var restDuration: Long = 15000
     private var restProgress = 0
 
     private var exerciseTimer: CountDownTimer? = null
-    private var exerciseDuration: Long = 5000
+    private var exerciseDuration: Long = 45000
     private var exerciseProgress = 0
 
     private var exerciseList: ArrayList<ExerciseModel>? = null
@@ -78,11 +78,13 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
         dialogBinding.btnNo.setOnClickListener {
             customDialog.dismiss()
         }
+
+        customDialog.show()
     }
 
     override fun onBackPressed() {
         customDialogForBackButton()
-        //super.onBackPressed()
+        super.onBackPressed()
     }
 
     private fun setupExerciseRecyclerView(){

@@ -11,5 +11,4 @@
     android:textSize="14sp"
     android:gravity="center"
     android:padding="3dp"
-    android:textColor="#212121">
-</TextView>
+    android:textColor="#212121"/>
