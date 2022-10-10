@@ -27,7 +27,7 @@ Google Pixel 3
 
 ## Notes
 
-The app is not published on Google Play Store. Follow these steps to use the app:
+The app is not available on Google Play Store. Follow these steps to use the app:
 - Install Android Studio
 - Clone the project
 - Run the project 
