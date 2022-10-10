@@ -6,10 +6,10 @@
 
 ## Features
 
-- [x] Time 15 cardio exercises with 45 second for exercise and 15 second for rest
+- [x] Time 15 cardio exercises with 45 seconds for exercise and 15 seconds for rest
 - [x] Use Room Database to store exercise history
 - [x] Support calculating BMI in US Unit and Metric Unit
-- [x] Use TextToSpeech to notify the user the next exercise
+- [x] Use TextToSpeech to notify the user of the next exercise
 
 ## Video Walkthrough
 
@@ -27,7 +27,7 @@ Google Pixel 3
 
 ## Notes
 
-The app is not available on Google Play Store. Follow these steps to use the app:
+The app is not published on Google Play Store. Follow these steps to use the app:
 - Install Android Studio
 - Clone the project
 - Run the project 
